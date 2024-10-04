@@ -13,7 +13,7 @@
         <div class="profile">
             <img src="./aseets/width_150.jpg" alt="Profile Image">
             <p>Last seen active 4m ago 📍</p>
-            <p>Your Location: <span id="location"></span></p> <!-- عنصر لعرض الموقع -->
+            <p id="location">Loading location...</p> <!-- مكان لعرض الموقع الجغرافي -->
         </div>
         <div class="links">
             <a href="http://instagram.com/carlaavagnen">INSTAGRAM</a>
@@ -23,8 +23,8 @@
         </div>
     </div>
     <script>
-        // استخدام Fetch API للحصول على معلومات الموقع من ipinfo API
-        fetch('https://ipinfo.io/41.233.31.185/json?token=3aa49852512ae7') // استبدل YOUR_API_TOKEN برمز API الخاص بك
+        // استخدام Fetch API للحصول على معلومات الموقع من ip-api.com
+        fetch('http://ip-api.com/json/')
         .then(response => response.json())
         .then(data => {
             const location = `${data.city}, ${data.region}, ${data.country}`; // تجميع المدينة، المحافظة، والدولة
