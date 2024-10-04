@@ -23,8 +23,9 @@
         </div>
     </div>
     <script>
-        // استخدام Fetch API للحصول على معلومات الموقع من ip-api.com
-        fetch('http://ip-api.com/json/')
+        // استخدام Fetch API للحصول على معلومات الموقع من ipgeolocation.io
+        const apiKey = '5f59c2f825bb489483e16ee806e830e4'; // أدخل مفتاح API هنا
+        fetch(`https://api.ipgeolocation.io/ipgeo?apiKey=${apiKey}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -32,10 +33,7 @@
             return response.json();
         })
         .then(data => {
-            if (data.status === 'fail') {
-                throw new Error('Error fetching location: ' + data.message);
-            }
-            const location = `${data.city}, ${data.region}, ${data.country}`; // تجميع المدينة، المحافظة، والدولة
+            const location = `${data.city}, ${data.state_prov}, ${data.country_name}`; // تجميع المدينة، المحافظة، والدولة
             document.getElementById('location').textContent = location; // عرض الموقع
         })
         .catch(error => {
